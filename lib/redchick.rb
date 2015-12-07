@@ -1,5 +1,6 @@
 require "redchick/version"
 require "readline"
+require "oauth"
 
 module Redchick
   CONSUMER_KEY = "6vSPn8nvt62lIXlmQ0f6JSI7O"
