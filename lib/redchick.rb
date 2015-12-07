@@ -2,8 +2,8 @@ require "redchick/version"
 require "readline"
 
 module Redchick
-  CONSUMER_KEY = ""
-  CONSUMER_SECRET = ""
+  CONSUMER_KEY = "6vSPn8nvt62lIXlmQ0f6JSI7O"
+  CONSUMER_SECRET = "PYZQYeIm0ca6Jc6DMdlrMx0hfDyPKZPsksA1WvMWKtgzjeihSO"
 
   class Cli
     def start
