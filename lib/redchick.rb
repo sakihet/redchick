@@ -24,14 +24,21 @@ module Redchick
 
     def start
       puts "redchick version: #{Redchick::VERSION}"
+      client_methods = Redchick::Cli.instance_methods(false)
       while buf = Readline.readline("> ", true)
-        p buf
-        tweet(buf)
+        cmd, *vals = buf.split(' ')
+        if client_methods.include?(cmd.to_sym)
+          if vals.empty?
+            self.send(cmd)
+          else
+            self.send(cmd, vals)
+          end
+        end
       end
     end
 
-    def tweet(str)
-      @client.update(str)
+    def tweet(vals)
+      @client.update(vals.join(' '))
     end
   end
 
