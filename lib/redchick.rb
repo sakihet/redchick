@@ -48,15 +48,11 @@ module Redchick
     end
 
     def follow(users)
-      users.each do |u|
-        @client.follow u
-      end
+      users.each { |u| @client.follow u }
     end
 
     def unfollow(users)
-      users.each do |u|
-        @client.unfollow u
-      end
+      users.each { |u| @client.unfollow u }
     end
   end
 
