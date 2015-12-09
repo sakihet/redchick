@@ -40,6 +40,12 @@ module Redchick
     def tweet(vals)
       @client.update(vals.join(' '))
     end
+
+    def home
+      @client.home_timeline.each do |t|
+        puts t.text
+      end
+    end
   end
 
   def self.start
