@@ -52,6 +52,12 @@ module Redchick
         @client.follow u
       end
     end
+
+    def unfollow(users)
+      users.each do |u|
+        @client.unfollow u
+      end
+    end
   end
 
   def self.start
