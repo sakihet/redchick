@@ -54,6 +54,10 @@ module Redchick
     def unfollow(users)
       users.each { |u| @client.unfollow u }
     end
+
+    def block(users)
+      users.each { |u| @client.block u }
+    end
   end
 
   def self.start
