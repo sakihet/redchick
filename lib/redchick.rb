@@ -46,6 +46,12 @@ module Redchick
         puts t.text
       end
     end
+
+    def follow(users)
+      users.each do |u|
+        @client.follow u
+      end
+    end
   end
 
   def self.start
