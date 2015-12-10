@@ -41,6 +41,10 @@ module Redchick
       @client.update(vals.join(' '))
     end
 
+    def like(ids)
+      ids.each { |i| @client.favorite i }
+    end
+
     def home
       @client.home_timeline.each do |t|
         puts "#{t.user.screen_name.rjust(15)}: #{t.text}"
