@@ -45,6 +45,10 @@ module Redchick
       ids.each { |i| @client.favorite i }
     end
 
+    def retweet(ids)
+      ids.each { |i| @client.retweet i }
+    end
+
     def home
       @client.home_timeline.each do |t|
         puts "#{t.user.screen_name.rjust(15)}: #{t.text}"
