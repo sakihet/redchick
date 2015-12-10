@@ -43,7 +43,9 @@ module Redchick
 
     def home
       @client.home_timeline.each do |t|
-        puts t.text
+        puts "#{t.user.screen_name.rjust(15)}: #{t.text}"
+        puts "#{' '*15}  like: #{t.favorite_count}, rt: #{t.retweet_count}, id: #{t.id}"
+        puts ""
       end
     end
 
