@@ -41,6 +41,10 @@ module Redchick
       @client.update(vals.join(' '))
     end
 
+    def delete(ids)
+      ids.each { |id| @client.destroy_status id }
+    end
+
     def like(ids)
       ids.each { |i| @client.favorite i }
     end
