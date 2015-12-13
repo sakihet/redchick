@@ -69,6 +69,12 @@ module Redchick
       end
     end
 
+    def mentions
+      @client.mentions_timeline.each do |t|
+        show_tweet(t)
+      end
+    end
+
     def follow(users)
       users.each { |u| @client.follow u }
     end
