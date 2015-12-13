@@ -14,12 +14,17 @@ module Redchick
   class Cli
     @client = nil
 
-    def initialize(oauth_token, oauth_token_secret)
+    def initialize(config)
+      @config = config
+      current_user = @config[:current_user]
+      token = @config[:users][current_user.to_sym][:oauth_token]
+      secret = @config[:users][current_user.to_sym][:oauth_token_secret]
+
       @client = Twitter::REST::Client.new do |conf|
         conf.consumer_key = CONSUMER_KEY
         conf.consumer_secret = CONSUMER_SECRET
-        conf.access_token = oauth_token
-        conf.access_token_secret = oauth_token_secret
+        conf.access_token = token
+        conf.access_token_secret = secret
       end
     end
 
@@ -36,6 +41,10 @@ module Redchick
           end
         end
       end
+    end
+
+    def config
+      puts @config
     end
 
     def tweet(vals)
@@ -75,11 +84,8 @@ module Redchick
 
   def self.start
     generate_config_file unless File.exists? File.join(Dir.home, CONFIG_FILE)
-    @config = YAML.load_file(File.join(Dir.home, CONFIG_FILE))
-    current_user = @config[:current_user]
-    token = @config[:users][current_user.to_sym][:oauth_token]
-    secret = @config[:users][current_user.to_sym][:oauth_token_secret]
-    cli = Redchick::Cli.new(token, secret)
+    config = YAML.load_file(File.join(Dir.home, CONFIG_FILE))
+    cli = Redchick::Cli.new(config)
     cli.start
   end
 
