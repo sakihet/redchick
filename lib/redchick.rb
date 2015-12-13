@@ -1,4 +1,5 @@
 require "redchick/version"
+require "redchick/layout"
 require "readline"
 require "yaml"
 require "oauth"
@@ -55,9 +56,7 @@ module Redchick
 
     def home
       @client.home_timeline.each do |t|
-        puts "#{t.user.screen_name.rjust(15)}: #{t.text}"
-        puts "#{' '*15}  like: #{t.favorite_count}, rt: #{t.retweet_count}, id: #{t.id}"
-        puts ""
+        puts Redchick::Layout.simple(t)
       end
     end
 
