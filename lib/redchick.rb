@@ -65,7 +65,7 @@ module Redchick
 
     def home
       @client.home_timeline.each do |t|
-        puts Redchick::Layout.simple(t)
+        show_tweet(t)
       end
     end
 
@@ -79,6 +79,10 @@ module Redchick
 
     def block(users)
       users.each { |u| @client.block u }
+    end
+
+    def show_tweet(t)
+      puts Redchick::Layout.send(@config[:layout], t)
     end
   end
 
