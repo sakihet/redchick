@@ -129,6 +129,7 @@ module Redchick
     screen_name = access_token.params[:screen_name]
     config = {
       current_user: screen_name,
+      layout: 'basic',
       users: {
         "#{screen_name}": {
                             oauth_token: access_token.token,
