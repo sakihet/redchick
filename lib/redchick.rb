@@ -63,6 +63,10 @@ module Redchick
       ids.each { |i| @client.retweet i }
     end
 
+    def open(ids)
+      ids.each { |id| system "open #{@client.status(id).uri}" }
+    end
+
     def home
       @client.home_timeline.each do |t|
         show_tweet(t)
