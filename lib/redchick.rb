@@ -75,6 +75,12 @@ module Redchick
       end
     end
 
+    def view(username)
+      @client.user_timeline(username).each do |t|
+        show_tweet(t)
+      end
+    end
+
     def follow(users)
       users.each { |u| @client.follow u }
     end
