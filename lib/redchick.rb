@@ -81,6 +81,16 @@ module Redchick
       end
     end
 
+    def whois(username)
+      user = @client.user(username)
+      puts "name: #{user.name}"
+      puts "description: #{user.description}"
+      puts "tweets: #{user.statuses_count}"
+      puts "followers: #{user.followers_count}"
+      puts "friends: #{user.friends_count}"
+      puts "location: #{user.location}"
+    end
+
     def search(query)
       @client.search("#{query}").take(20).each do |t|
         show_tweet(t)
