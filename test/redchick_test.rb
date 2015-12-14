@@ -5,7 +5,7 @@ class RedchickTest < Minitest::Test
     refute_nil ::Redchick::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_version_number_format
+    assert_match(/(\d).(\d).(\d)/, Redchick::VERSION)
   end
 end
