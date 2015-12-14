@@ -81,6 +81,12 @@ module Redchick
       end
     end
 
+    def search(query)
+      @client.search("#{query}").take(20).each do |t|
+        show_tweet(t)
+      end
+    end
+
     def follow(users)
       users.each { |u| @client.follow u }
     end
