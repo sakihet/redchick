@@ -7,7 +7,7 @@ module Redchick
     def self.basic(t)
       "#{t.user.name} @#{t.user.screen_name} #{t.created_at}\n"\
       "#{t.text}\n"\
-      "rt: #{t.retweet_count}, like: #{t.favorite_count}\n"\
+      "rt: #{t.retweet_count}, like: #{t.favorite_count}, id: #{t.id}\n"\
       "--\n"
     end
   end
