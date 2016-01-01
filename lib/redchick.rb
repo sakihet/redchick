@@ -41,6 +41,9 @@ module Redchick
             else
               self.send(cmd, vals)
             end
+          else
+            puts "no command"
+            puts "please use help"
           end
         end
       end
