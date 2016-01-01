@@ -56,6 +56,13 @@ module Redchick
       @client.update(vals.join(' '))
     end
 
+    def reply(id_and_str)
+      id = id_and_str[0]
+      str = id_and_str[1]
+      target = @client.status(id)
+      @client.update("@#{target.user.screen_name} #{str}", { in_reply_to_status: target })
+    end
+
     def delete(ids)
       ids.each { |id| @client.destroy_status id }
     end
