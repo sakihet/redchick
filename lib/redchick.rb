@@ -47,6 +47,11 @@ module Redchick
       puts @config
     end
 
+    def help
+      puts "commands:"
+      puts Redchick::Cli.instance_methods(false)
+    end
+
     def tweet(vals)
       @client.update(vals.join(' '))
     end
