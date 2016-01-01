@@ -33,11 +33,14 @@ module Redchick
       client_methods = Redchick::Cli.instance_methods(false)
       while buf = Readline.readline("> ", true)
         cmd, *vals = buf.split(' ')
-        if client_methods.include?(cmd.to_sym)
-          if vals.empty?
-            self.send(cmd)
-          else
-            self.send(cmd, vals)
+        if cmd
+          cmd = cmd.to_sym
+          if client_methods.include?(cmd)
+            if vals.empty?
+              self.send(cmd)
+            else
+              self.send(cmd, vals)
+            end
           end
         end
       end
