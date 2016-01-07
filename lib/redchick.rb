@@ -61,6 +61,7 @@ module Redchick
     def tweet(vals)
       @client.update(vals.join(' '))
     end
+    alias_method :t, :tweet
 
     def reply(id_and_str)
       id = id_and_str[0]
