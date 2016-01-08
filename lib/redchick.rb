@@ -53,6 +53,10 @@ module Redchick
       puts @config
     end
 
+    def version
+      puts Redchick::VERSION
+    end
+
     def help
       puts "commands:"
       puts Redchick::Cli.instance_methods(false)
