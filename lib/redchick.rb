@@ -31,7 +31,7 @@ module Redchick
     def start
       puts "redchick version: #{Redchick::VERSION}"
       client_methods = Redchick::Cli.instance_methods(false)
-      while buf = Readline.readline("> ", true)
+      while buf = Readline.readline("\e[31m>\e[0m ", true)
         cmd, *vals = buf.split(' ')
         if cmd
           cmd = cmd.to_sym
