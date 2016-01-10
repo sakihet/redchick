@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'oauth', '~> 0.4.7'
   spec.add_runtime_dependency 'twitter', '~> 5.15'
+  spec.add_runtime_dependency 'colorize', '~> 0.7.7'
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"

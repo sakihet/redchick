@@ -5,6 +5,7 @@ require "yaml"
 require "oauth"
 require "twitter"
 require "pry"
+require "colorize"
 
 module Redchick
   CONSUMER_KEY = "6vSPn8nvt62lIXlmQ0f6JSI7O"
