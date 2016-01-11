@@ -125,6 +125,17 @@ module Redchick
       end
     end
 
+    def ls(arg)
+      case arg[0]
+      when 'fl'
+        @client.followers.each { |user| puts user.screen_name }
+      when 'fr'
+        @client.friends.each { |user| puts user.screen_name }
+      else
+        puts 'error'
+      end
+    end
+
     def follow(users)
       users.each { |u| @client.follow u }
     end
