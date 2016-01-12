@@ -103,6 +103,12 @@ module Redchick
       end
     end
 
+    def likes
+      @client.favorites.each do |t|
+        show_tweet(t)
+      end
+    end
+
     def view(username)
       @client.user_timeline(username).each do |t|
         show_tweet(t)
