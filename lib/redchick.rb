@@ -154,6 +154,12 @@ module Redchick
       users.each { |u| @client.block u }
     end
 
+    def lists
+      @client.owned_lists.each do |l|
+        puts l.name
+      end
+    end
+
     def show_tweet(t)
       puts Redchick::Layout.send(@config[:layout], t)
     end
