@@ -160,6 +160,12 @@ module Redchick
       end
     end
 
+    def list(arg)
+      @client.list_timeline(arg[0]).each do |t|
+        show_tweet(t)
+      end
+    end
+
     def show_tweet(t)
       puts Redchick::Layout.send(@config[:layout], t)
     end
