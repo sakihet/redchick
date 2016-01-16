@@ -33,19 +33,23 @@ module Redchick
       puts "redchick version: #{Redchick::VERSION}"
       client_methods = Redchick::Cli.instance_methods(false)
       while buf = Readline.readline("\e[31m>\e[0m ", true)
-        cmd, *vals = buf.split(' ')
-        if cmd
-          cmd = cmd.to_sym
-          if client_methods.include?(cmd)
-            if vals.empty?
-              self.send(cmd)
+        begin
+          cmd, *vals = buf.split(' ')
+          if cmd
+            cmd = cmd.to_sym
+            if client_methods.include?(cmd)
+              if vals.empty?
+                self.send(cmd)
+              else
+                self.send(cmd, vals)
+              end
             else
-              self.send(cmd, vals)
+              puts "no command"
+              puts "please use help"
             end
-          else
-            puts "no command"
-            puts "please use help"
           end
+        rescue
+          puts 'error'
         end
       end
     end
