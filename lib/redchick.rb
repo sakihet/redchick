@@ -66,6 +66,7 @@ module Redchick
       puts "commands:"
       puts Redchick::Cli.instance_methods(false)
     end
+    alias_method :h, :help
 
     def tweet(vals)
       @client.update(vals.join(' '))
@@ -78,10 +79,12 @@ module Redchick
       target = @client.status(id)
       @client.update("@#{target.user.screen_name} #{str}", { in_reply_to_status: target })
     end
+    alias_method :rep, :reply
 
     def delete(ids)
       ids.each { |id| @client.destroy_status id }
     end
+    alias_method :del, :delete
 
     def like(ids)
       ids.each { |i| @client.favorite i }
@@ -94,6 +97,7 @@ module Redchick
     def open(ids)
       ids.each { |id| system "open #{@client.status(id).uri}" }
     end
+    alias_method :o, :open
 
     def home
       @client.home_timeline.each do |t|
@@ -134,6 +138,7 @@ module Redchick
         show_tweet(t)
       end
     end
+    alias_method :s, :search
 
     def ls(arg)
       case arg[0]
@@ -149,14 +154,17 @@ module Redchick
     def follow(users)
       users.each { |u| @client.follow u }
     end
+    alias_method :f, :follow
 
     def unfollow(users)
       users.each { |u| @client.unfollow u }
     end
+    alias_method :uf, :unfollow
 
     def block(users)
       users.each { |u| @client.block u }
     end
+    alias_method :bl, :block
 
     def lists
       @client.owned_lists.each do |l|
