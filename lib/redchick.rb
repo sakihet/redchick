@@ -58,6 +58,10 @@ module Redchick
       puts @config
     end
 
+    def layout
+      puts @config[:layout]
+    end
+
     def version
       puts Redchick::VERSION
     end
