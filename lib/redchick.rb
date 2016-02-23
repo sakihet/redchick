@@ -27,6 +27,10 @@ module Redchick
         conf.access_token = token
         conf.access_token_secret = secret
       end
+
+      @timeline_opts = {
+        count: @config[:count]
+      }
     end
 
     def start
@@ -104,25 +108,25 @@ module Redchick
     alias_method :o, :open
 
     def home
-      @client.home_timeline.each do |t|
+      @client.home_timeline(@timeline_opts).each do |t|
         show_tweet(t)
       end
     end
 
     def mentions
-      @client.mentions_timeline.each do |t|
+      @client.mentions_timeline(@timeline_opts).each do |t|
         show_tweet(t)
       end
     end
 
     def likes
-      @client.favorites.each do |t|
+      @client.favorites(count: @config[:count]).each do |t|
         show_tweet(t)
       end
     end
 
     def view(username)
-      @client.user_timeline(username).each do |t|
+      @client.user_timeline(username, @timeline_opts).each do |t|
         show_tweet(t)
       end
     end
@@ -138,7 +142,7 @@ module Redchick
     end
 
     def search(query)
-      @client.search("#{query}").take(20).each do |t|
+      @client.search("#{query}").take(@config[:count]).each do |t|
         show_tweet(t)
       end
     end
@@ -213,6 +217,7 @@ module Redchick
     config = {
       current_user: screen_name,
       layout: 'basic',
+      count: 15,
       users: {
         "#{screen_name}": {
                             oauth_token: access_token.token,
