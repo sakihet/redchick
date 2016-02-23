@@ -1,16 +1,16 @@
-require "redchick/version"
-require "redchick/layout"
-require "readline"
-require "yaml"
-require "oauth"
-require "twitter"
-require "pry"
-require "colorize"
+require 'redchick/version'
+require 'redchick/layout'
+require 'readline'
+require 'yaml'
+require 'oauth'
+require 'twitter'
+require 'pry'
+require 'colorize'
 
 module Redchick
-  CONSUMER_KEY = "6vSPn8nvt62lIXlmQ0f6JSI7O"
-  CONSUMER_SECRET = "PYZQYeIm0ca6Jc6DMdlrMx0hfDyPKZPsksA1WvMWKtgzjeihSO"
-  CONFIG_FILE = ".redchick.yml"
+  CONSUMER_KEY = '6vSPn8nvt62lIXlmQ0f6JSI7O'
+  CONSUMER_SECRET = 'PYZQYeIm0ca6Jc6DMdlrMx0hfDyPKZPsksA1WvMWKtgzjeihSO'
+  CONFIG_FILE = '.redchick.yml'
 
   class Cli
     @client = nil
@@ -43,13 +43,13 @@ module Redchick
             cmd = cmd.to_sym
             if client_methods.include?(cmd)
               if vals.empty?
-                self.send(cmd)
+                send(cmd)
               else
-                self.send(cmd, vals)
+                send(cmd, vals)
               end
             else
-              puts "no command"
-              puts "please use help"
+              puts 'no command'
+              puts 'please use help'
             end
           end
         rescue
@@ -71,7 +71,7 @@ module Redchick
     end
 
     def help
-      puts "commands:"
+      puts 'commands:'
       puts Redchick::Cli.instance_methods(false)
     end
     alias_method :h, :help
@@ -85,7 +85,7 @@ module Redchick
       id = id_and_str[0]
       str = id_and_str[1]
       target = @client.status(id)
-      @client.update("@#{target.user.screen_name} #{str}", { in_reply_to_status: target })
+      @client.update("@#{target.user.screen_name} #{str}", in_reply_to_status: target)
     end
     alias_method :rep, :reply
 
@@ -192,7 +192,7 @@ module Redchick
   end
 
   def self.start
-    generate_config_file unless File.exists? File.join(Dir.home, CONFIG_FILE)
+    generate_config_file unless File.exist? File.join(Dir.home, CONFIG_FILE)
     config = YAML.load_file(File.join(Dir.home, CONFIG_FILE))
     cli = Redchick::Cli.new(config)
     cli.start
@@ -220,9 +220,9 @@ module Redchick
       count: 15,
       users: {
         "#{screen_name}": {
-                            oauth_token: access_token.token,
-                            oauth_token_secret: access_token.secret
-                          }
+          oauth_token: access_token.token,
+          oauth_token_secret: access_token.secret
+        }
       }
     }
     f = File.new(File.join(Dir.home, CONFIG_FILE), 'w')
