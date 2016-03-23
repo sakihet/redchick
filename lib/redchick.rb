@@ -71,8 +71,30 @@ module Redchick
     end
 
     def help
-      puts 'commands:'
-      puts Redchick::Cli.instance_methods(false)
+      help_text = <<-'EOS'
+explore commands:
+  home
+  mentions
+  likes
+  view <screen name>
+  whois <screen name>
+  search <query>
+tweet commands:
+  tweet
+  reply <tweet id>
+  delete <tweet id>
+  like <tweet id>
+  retweet <tweet id>
+  open <tweet id>
+friends and followers commands:
+  ls fl,fr
+  follow <screen name>
+  unfollow <screen name>
+list commands:
+  lists
+  list <list name>
+EOS
+      puts help_text
     end
     alias_method :h, :help
 
