@@ -36,6 +36,9 @@ module Redchick
     def start
       puts "redchick version: #{Redchick::VERSION::STRING}"
       client_methods = Redchick::Cli.instance_methods(false)
+      commands = client_methods.map(&:to_s)
+      comp = proc { |s| commands.grep(/^#{Regexp.escape(s)}/) }
+      Readline.completion_proc = comp
       while buf = Readline.readline("\e[31m>\e[0m ", true)
         begin
           cmd, *vals = buf.split(' ')
