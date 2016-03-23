@@ -1,4 +1,5 @@
 # Redchick
+[![Build Status](https://travis-ci.org/sakihet/redchick.svg?branch=master)](https://travis-ci.org/sakihet/redchick)
 
 Twitter client on terminal.
 
