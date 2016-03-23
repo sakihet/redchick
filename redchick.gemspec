@@ -5,7 +5,7 @@ require 'redchick/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'redchick'
-  spec.version       = Redchick::VERSION
+  spec.version       = Redchick::VERSION::STRING
   spec.authors       = ['saki']
   spec.email         = ['sakihet@gmail.com']
 

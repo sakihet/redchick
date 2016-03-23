@@ -34,7 +34,7 @@ module Redchick
     end
 
     def start
-      puts "redchick version: #{Redchick::VERSION}"
+      puts "redchick version: #{Redchick::VERSION::STRING}"
       client_methods = Redchick::Cli.instance_methods(false)
       while buf = Readline.readline("\e[31m>\e[0m ", true)
         begin
@@ -67,7 +67,7 @@ module Redchick
     end
 
     def version
-      puts Redchick::VERSION
+      puts Redchick::VERSION::STRING
     end
 
     def help

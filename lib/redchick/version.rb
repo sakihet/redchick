@@ -1,3 +1,9 @@
 module Redchick
-  VERSION = '0.0.2'
+  module VERSION
+    MAJOR = 0
+    MINOR = 0
+    PATCH = 2
+
+    STRING = [MAJOR, MINOR, PATCH].compact.join('.')
+  end
 end
