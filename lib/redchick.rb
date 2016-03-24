@@ -61,6 +61,11 @@ module Redchick
       end
     end
 
+    def exit
+      exit!
+    end
+    alias_method :quit, :exit
+
     def config
       puts @config
     end
