@@ -5,6 +5,10 @@ module Redchick
       "#{t.user.screen_name.rjust(15)}: #{t.text}"
     end
 
+    def self.oneline(t)
+      "#{t.user.screen_name.rjust(15)}: #{t.text}".colorize(@colors[t.user.screen_name.sum % @colors.size])
+    end
+
     def self.basic(t)
       "#{t.user.name} @#{t.user.screen_name} #{t.created_at}\n"\
       "#{t.text}\n"\
