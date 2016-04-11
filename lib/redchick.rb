@@ -246,8 +246,8 @@ EOS
     screen_name = access_token.params[:screen_name]
     config = {
       current_user: screen_name,
-      layout: 'basic',
-      count: 15,
+      layout: 'oneline',
+      count: 20,
       users: {
         "#{screen_name}": {
           oauth_token: access_token.token,
