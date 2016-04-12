@@ -216,6 +216,15 @@ EOS
       end
     end
 
+    def create_list(arg)
+      # TODO: manage opts
+      opts = {
+        mode: 'private',
+        description: ''
+      }
+      @client.create_list(arg[0], opts)
+    end
+
     def show_tweet(t)
       puts Redchick::Layout.send(@config[:layout], t)
     end
